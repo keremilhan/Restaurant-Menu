@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+:root {
+    --color-cream: #C59D5F;
+    --color-dark-blue: #102A42;
+    --color-light-blue: #617D98;
+    --color-background: #F1F5F8;
+}
+
+body {
+    background-color: var(--color-background);
+}
+
+nav {
+    padding-top: 6rem;
+}
+
+nav h1{
+    width: fit-content;
+    margin: auto;
+    font-size: 3rem;
+}
+
+nav hr {
+    border-top: 5px solid var(--color-cream);
+    width: 125px;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+#navbar-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.padding {
+    padding: 0.25rem 0.75rem;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.menu-items-border-colors {
+    border: 3px solid;
+    border-left-color: var(--color-cream);
+    border-top-color: var(--color-cream);
+}
+
+.heading {
+    color: var(--color-dark-blue);
+    letter-spacing: 5px;
+    font-weight: 800;
+}
+
+.menu-text {
+    color: var(--color-cream);
+}
+
+.image {
+    border: 5px solid var(--color-cream);
+    object-fit: cover;
+    height: 15vh;
+    width: 12vw;    
+}
+
+.menu-item {
+    display: flex;
+    width: 30vw;
+    height: 15vh;
+}
+
+.item-content>* {
+    width: 90%;
+    margin: auto;
+}
+
+.item-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dotted black;
+    padding-bottom: 0.6rem;
+    letter-spacing: 3px;
+    color: var(--color-dark-blue)
+}
+
+.item-price {
+    color: var(--color-cream);
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.item-description {
+    padding-top: 1rem;
+    font-size: 1.3rem;
+    color: var(--color-light-blue);
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 30% 30%;
+    place-content: center;
+    gap: 3rem;
+    margin-top: 5rem;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .menu {
+        grid-template-columns: 40%;
+        gap: 3rem;
+        place-items: center;
+    }
+
+    .menu-item {
+        flex-direction: column;
+        width: 80vw;
+        height: 60vh;
+    }
+
+    .image {
+        width: 80vw;
+        height: 40vh;
+    }
+
+    .item-content {
+        margin-top: 1rem;
+    }
+
+    .m-1 {
+        margin: 0.5rem;
+    }
+
+}
