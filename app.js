@@ -82,32 +82,59 @@ const menu = [
 ];
 
 const menuSection = document.querySelector('.menu');
+const menuBtns = document.querySelectorAll('.menu-btn')
 
+
+// load items
 window.addEventListener('DOMContentLoaded', function(){
-    let displayMenu = menu.map(function(item) {
-        
-        // return `<h1>hello world<h1>`
-        // return `<h1>${item.title}<h1>`
-        return `<div class="menu-item">
-                    <div class="image-container">
-                        <img class="rounded image" src=${item.img} alt=${item.title}>
-                    </div>
-                    <div class="item-content">
-                        <div class="item-heading">
-                            <h2>${item.title}</h2>
-                            <span class="item-price">${item.price}</span>
-                        </div>
-                        <div class="item-description">
-                            <p>${item.desc}</p>
-                        </div>
-                    </div>
-                </div>`
-    });
-
-    displayMenu = displayMenu.join('')
-    menuSection.innerHTML = displayMenu
+  displayMenuItems(menu);
+  const categories = menu.map(function(item){
+    return item.category
+  })
+  console.log(categories)
 });
 
+// filter items
+menuBtns.forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    const category =e.currentTarget.dataset.id;
+    const menuCategory = menu.filter(function(menuItem){
+      // console.log(menuItem.category);
+      if(menuItem.category === category){
+        return menuItem;
+      }
+    })
+    // console.log(menuCategory)
+    if(category === 'all'){
+      displayMenuItems(menu);
+    }else {
+      displayMenuItems(menuCategory);
+    }
+  })
+})
+
 function displayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function(item) {
+        
+    // return `<h1>hello world<h1>`
+    // return `<h1>${item.title}<h1>`
+    return `<div class="menu-item">
+                <div class="image-container">
+                    <img class="rounded image" src=${item.img} alt=${item.title}>
+                </div>
+                <div class="item-content">
+                    <div class="item-heading">
+                        <h2>${item.title}</h2>
+                        <span class="item-price">${item.price}</span>
+                    </div>
+                    <div class="item-description">
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            </div>`
+});
+
+  displayMenu = displayMenu.join('');
+  menuSection.innerHTML = displayMenu  
 
 }

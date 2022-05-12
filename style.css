@@ -16,13 +16,20 @@ body {
     background-color: var(--color-background);
 }
 
-nav {
+.btn-container {
     padding-top: 6rem;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 nav h1{
     width: fit-content;
     margin: auto;
+    margin-top: 3rem;
     font-size: 3rem;
 }
 
@@ -33,36 +40,22 @@ nav hr {
     margin-top: 1rem;
 }
 
-#navbar-list {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    margin-top: 2rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.m-1 {
+.menu-btn {
     margin: 1rem;
-}
-
-.padding {
-    padding: 0.25rem 0.75rem;
-}
-
-.text-decoration-none {
-    text-decoration: none;
-}
-
-.rounded {
+    padding: 0.75rem 1.5rem;
     border-radius: 10px;
+    border: 3px solid var(--color-cream);
+    color: var(--color-cream);
+    transition: all 0.3s linear;
+    cursor: pointer;
+    font-size: 1.5rem;
 }
 
-.menu-items-border-colors {
-    border: 3px solid;
-    border-left-color: var(--color-cream);
-    border-top-color: var(--color-cream);
+.menu-btn:hover {
+    background-color: var(--color-cream);
+    color: white;
 }
+
 
 .heading {
     color: var(--color-dark-blue);
@@ -70,8 +63,8 @@ nav hr {
     font-weight: 800;
 }
 
-.menu-text {
-    color: var(--color-cream);
+.rounded{
+    border-radius: 10px;
 }
 
 .image {
@@ -145,8 +138,8 @@ nav hr {
         margin-top: 1rem;
     }
 
-    .m-1 {
-        margin: 0.5rem;
+    .menu-btn{
+        margin: 0.35rem;
+        padding: 0.40rem 0.75rem;
     }
-
 }
