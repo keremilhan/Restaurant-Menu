@@ -82,36 +82,17 @@ const menu = [
 ];
 
 const menuSection = document.querySelector('.menu');
-const menuBtns = document.querySelectorAll('.menu-btn')
+const btnContainer = document.querySelector('.btn-container');
+
 
 
 // load items
 window.addEventListener('DOMContentLoaded', function(){
   displayMenuItems(menu);
-  const categories = menu.map(function(item){
-    return item.category
-  })
-  console.log(categories)
+  displayMenuButtons();
 });
 
-// filter items
-menuBtns.forEach(function(btn){
-  btn.addEventListener('click', function(e){
-    const category =e.currentTarget.dataset.id;
-    const menuCategory = menu.filter(function(menuItem){
-      // console.log(menuItem.category);
-      if(menuItem.category === category){
-        return menuItem;
-      }
-    })
-    // console.log(menuCategory)
-    if(category === 'all'){
-      displayMenuItems(menu);
-    }else {
-      displayMenuItems(menuCategory);
-    }
-  })
-})
+
 
 function displayMenuItems(menuItems) {
   let displayMenu = menuItems.map(function(item) {
@@ -136,5 +117,39 @@ function displayMenuItems(menuItems) {
 
   displayMenu = displayMenu.join('');
   menuSection.innerHTML = displayMenu  
+}
 
+function displayMenuButtons(){
+  const categories = menu.reduce(function(values,item){
+    if(!values.includes(item.category)){
+      values.push(item.category);
+    }
+    return values;
+  },
+  ['all']
+  );
+  const categoryBtns = categories.map(function(category){
+    return `<button class="menu-btn" type="button" data-id=${category}>${category.charAt(0).toUpperCase() + category.slice(1)}</button>`
+  }).join("");
+    btnContainer.innerHTML = categoryBtns;
+    const menuBtns = document.querySelectorAll('.menu-btn')
+    // filter items
+    menuBtns.forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        const category =e.currentTarget.dataset.id;
+        const menuCategory = menu.filter(function(menuItem){
+          // console.log(menuItem.category);
+          if(menuItem.category === category){
+            return menuItem;
+          }
+        })
+        // console.log(menuCategory)
+        if(category === 'all'){
+          displayMenuItems(menu);
+        }else {
+          displayMenuItems(menuCategory);
+        }
+      });
+    });    
+  
 }
